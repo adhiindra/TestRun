@@ -1,0 +1,6 @@
+module Pods_TestRun_TestRunTests {
+  umbrella header "Pods-TestRun-TestRunTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
