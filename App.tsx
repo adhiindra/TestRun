@@ -1,5 +1,5 @@
-import React, { createContext, useLayoutEffect, useState } from 'react';
-import { DarkTheme, DefaultTheme, NavigationContainer, useIsFocused } from '@react-navigation/native';
+import React, { useLayoutEffect, useState } from 'react';
+import { DarkTheme, NavigationContainer, useIsFocused } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TodoList from './src/Navigations/TodoList';
 import Setting from './src/Navigations/Setting';

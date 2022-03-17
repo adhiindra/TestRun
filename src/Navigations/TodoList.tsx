@@ -36,7 +36,7 @@ const Home = observer(() => {
         <Text style={{ paddingTop: 23, paddingLeft: 25, paddingBottom: 20, color: 'white', fontWeight: 'bold', fontSize: 30 }}>Hi, User!</Text>
         <FlatList
           data={todos}
-          extraData={todos.length === null ? 1 : todos.length}
+          extraData={!todos || todos.length === null ? 1 : todos.length}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) =>
             <View style={{ marginBottom: 20, marginLeft: 20, marginRight: 20 }}>
@@ -46,7 +46,7 @@ const Home = observer(() => {
                     <Text style={item.status === "OPEN" ? styles.cardTitle_black : styles.cardTitle_white}>{item.status}</Text>
                   </View>
                   <TouchableOpacity style={{ backgroundColor: '#36393F', paddingHorizontal: 10, paddingVertical: 8, borderRadius: 10 }} onPress={() => deleteList(item.id)}>
-                    <Icon name="trash" size={20} color= 'white' />
+                    <Icon name="trash" size={20} color='white' />
                   </TouchableOpacity>
                 </View>
                 <View style={{ marginTop: 10, marginHorizontal: 3 }}>
@@ -56,9 +56,11 @@ const Home = observer(() => {
                       <Text style={styles.cardDescription}>Due Date:</Text>
                       <Text style={styles.cardDescription}>{item.date}</Text>
                     </View>
-                    <TouchableOpacity style={{ backgroundColor: '#5440D1', paddingHorizontal: 30, paddingVertical: 10, borderRadius: 10 }} onPress={() => updateList(item.id, "DONE")}>
-                      <Text style={{ color: 'white', fontWeight: 'bold' }}>DONE</Text>
-                    </TouchableOpacity>
+                    {item.status != "DONE" &&
+                      <TouchableOpacity style={{ backgroundColor: '#5440D1', paddingHorizontal: 30, paddingVertical: 10, borderRadius: 10 }} onPress={() => updateList(item.id, "DONE")}>
+                        <Text style={{ color: 'white', fontWeight: 'bold' }}>DONE</Text>
+                      </TouchableOpacity>
+                    }
                   </View>
                 </View>
               </View>
