@@ -42,11 +42,11 @@ const Home = observer(() => {
             <View style={{ marginBottom: 20, marginLeft: 20, marginRight: 20 }}>
               <View style={styles.container}>
                 <View style={styles.cardTop}>
-                  <View style={{ backgroundColor: '#C4C4C4', paddingHorizontal: 18, paddingVertical: 8, borderRadius: 30 }}>
-                    <Text style={styles.cardTitle}>{item.status}</Text>
+                  <View style={{ backgroundColor: item.status === "OPEN" ? '#C4C4C4' : item.status === "DONE" ? '#39C36D' : '#C33939', paddingHorizontal: 18, paddingVertical: 8, borderRadius: 30 }}>
+                    <Text style={item.status === "OPEN" ? styles.cardTitle_black : styles.cardTitle_white}>{item.status}</Text>
                   </View>
                   <TouchableOpacity style={{ backgroundColor: '#36393F', paddingHorizontal: 10, paddingVertical: 8, borderRadius: 10 }} onPress={() => deleteList(item.id)}>
-                    <Icon name="trash" size={20} color="white" />
+                    <Icon name="trash" size={20} color= 'white' />
                   </TouchableOpacity>
                 </View>
                 <View style={{ marginTop: 10, marginHorizontal: 3 }}>
@@ -151,7 +151,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  cardTitle: {
+  cardTitle_white: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: 'white'
+  },
+  cardTitle_black: {
     fontSize: 12,
     fontWeight: 'bold',
     color: 'black'
