@@ -6,7 +6,6 @@ const Todo = types.model({
   id: types.number,
   title: types.string,
   date: types.Date,
-  // time: types.string,
   status: types.string,
 });
 

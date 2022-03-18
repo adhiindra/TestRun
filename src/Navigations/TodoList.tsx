@@ -7,6 +7,7 @@ import WrapperComponent from '../Component/WrapperComponent';
 import {observer} from 'mobx-react-lite';
 import {useStoreTodo} from '../TodoData';
 import moment from 'moment';
+import Timer from './Timer';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -138,6 +139,14 @@ const TodoList = () => {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: () => <Icon name="home" color="white" size={24} />,
+        }}
+      />
+      <Tab.Screen
+        name="Timer"
+        component={Timer}
+        options={{
+          tabBarLabel: 'Timer',
+          tabBarIcon: () => <Icon name="clock-o" color="white" size={24} />,
         }}
       />
       <Tab.Screen

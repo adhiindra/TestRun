@@ -5,7 +5,6 @@ import {
 } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TodoList from './src/Navigations/TodoList';
-import Setting from './src/Navigations/Setting';
 import Login from './src/Navigations/Login';
 import {setupTodoStore, TodoDataProvider, TodoDataType} from './src/TodoData';
 import {StatusBar} from 'react-native';
@@ -50,7 +49,6 @@ const App = () => {
               gestureEnabled: false,
             }}
           />
-          <Stack.Screen name="Setting" component={Setting} />
         </Stack.Navigator>
       </NavigationContainer>
     </TodoDataProvider>
