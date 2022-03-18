@@ -19,16 +19,23 @@ const WrapperComponent = () => {
   const {addTodo} = useStoreTodo();
   const [datenow, setDatenow] = useState(new Date(Date.now()));
 
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isDateVisible, setDateVisible] = useState(false);
+
   const onChange = (event, value) => {
     setDatenow(value);
+    if(Platform.OS === 'android'){
+      setDateVisible(false);
+    }
   };
-
-  const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
     setTitle('');
     setDatenow(new Date(Date.now()));
     setModalVisible(!isModalVisible);
+  };
+  const toggleDate = () => {
+    setDateVisible(true);
   };
 
   const addData = () => {
@@ -68,7 +75,7 @@ const WrapperComponent = () => {
             <View
               style={{
                 flexDirection: 'row',
-                justifyContent: 'space-evenly',
+                justifyContent: 'space-between',
                 alignItems: 'center',
                 marginVertical: 20,
               }}>
@@ -76,9 +83,35 @@ const WrapperComponent = () => {
                 {' '}
                 Select Date :
               </Text>
-
-              <View style={styles.timepicker}>
-                {Platform.OS != 'android' && (
+              {Platform.OS === 'android' && (
+                <TouchableOpacity onPress={toggleDate}>
+                  {isDateVisible && (
+                    <View style={styles.timepicker}>
+                      <DateTimePicker
+                        value={datenow}
+                        mode={'date'}
+                        minimumDate={new Date()}
+                        display={'default'}
+                        themeVariant={'dark'}
+                        onChange={onChange}
+                      />
+                    </View>
+                  )}
+                  <View
+                    style={{
+                      backgroundColor: '#40444B',
+                      paddingHorizontal: 8,
+                      paddingVertical: 5,
+                      borderRadius: 8,
+                    }}>
+                    <Text style={{color: 'white', fontSize: 15}}>
+                      {moment(datenow).format('MMMM DD,YYYY')}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              )}
+              {Platform.OS === 'ios' && (
+                <View style={styles.timepicker_ios}>
                   <DateTimePicker
                     value={datenow}
                     mode={'date'}
@@ -87,8 +120,8 @@ const WrapperComponent = () => {
                     themeVariant={'dark'}
                     onChange={onChange}
                   />
-                )}
-              </View>
+                </View>
+              )}
             </View>
           </View>
           <View
@@ -134,7 +167,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   timepicker: {
-    width: 200,
+    justifyContent: 'center',
+  },
+  timepicker_ios: {
+    width:200,
     justifyContent: 'center',
   },
 });
