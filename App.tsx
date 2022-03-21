@@ -39,7 +39,7 @@ const App = () => {
   return (
     <TodoDataProvider value={todoStore}>
       <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="TodoList">
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen
             name="TodoList"

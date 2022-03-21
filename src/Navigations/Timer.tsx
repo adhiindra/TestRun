@@ -1,35 +1,42 @@
-import React from 'react';
+import {observer} from 'mobx-react-lite';
+import React, {useCallback, useEffect, useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import BackgroundTimer from 'react-native-background-timer';
+import {useStoreTodo} from '../TodoData';
+import {clockify, formatDecimals, getDateSeconds} from '../utils/format';
 
-const Timer = () => {
-  const hoursMinSecs = {hours: 0, minutes: 25, seconds: 0};
-  const {hours = 0, minutes = 0, seconds = 60} = hoursMinSecs;
-  const [[hrs, mins, secs], setTime] = React.useState([
-    hours,
-    minutes,
-    seconds,
-  ]);
-
-  const tick = () => {
-    if (hrs === 0 && mins === 0 && secs === 0) {
-      Alert.alert('Finish');
-      reset();
-    } else if (mins === 0 && secs === 0) {
-      setTime([hrs - 1, 59, 59]);
-    } else if (secs === 0) {
-      setTime([hrs, mins - 1, 59]);
-    } else {
-      setTime([hrs, mins, secs - 1]);
-    }
-  };
-
-  const reset = () => setTime([hours, minutes, seconds]);
+const Timer = observer(() => {
+  const {time} = useStoreTodo();
+  const {
+    setTimeStart,
+    timeStart,
+    timerOn,
+    setTimerOn,
+    setStartDate,
+    startDate,
+  } = time;
+  const [displayTime, setDisplayTime] = useState(0);
 
   React.useEffect(() => {
-    const timerId = setInterval(() => tick(), 1000);
-    return () => clearInterval(timerId);
-  });
+    const timeDate = setInterval(() => {
+      if (
+        timerOn &&
+        formatDecimals(startDate + timeStart - getDateSeconds()) >= 0
+      ) {
+        console.log(startDate + timeStart - getDateSeconds());
+        setDisplayTime(
+          formatDecimals(startDate + timeStart - getDateSeconds()),
+        );
+      } else {
+        clearInterval(timeDate);
+      }
+      console.log(startDate + timeStart - getDateSeconds());
+    }, 1000);
+
+    return () => clearInterval(timeDate);
+  }, [timerOn, startDate]);
+
+  const {displayHours, displayMins, displaySecs} = clockify(displayTime);
 
   return (
     <View style={styles.canvas}>
@@ -40,7 +47,7 @@ const Timer = () => {
           marginTop: 100,
         }}>
         <Text style={styles.timer}>
-          {hrs}:{mins}:{secs}
+          {displayHours}:{displayMins}:{displaySecs}
         </Text>
       </View>
       <View
@@ -49,12 +56,20 @@ const Timer = () => {
           justifyContent: 'space-between',
           padding: 50,
         }}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            setStartDate(getDateSeconds());
+            setTimerOn(true);
+          }}>
           <View style={styles.btn}>
             <Text style={styles.btnText}>START</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            setTimerOn(false);
+            setTimeStart(10);
+          }}>
           <View style={styles.btn}>
             <Text style={styles.btnText}>STOP</Text>
           </View>
@@ -62,7 +77,7 @@ const Timer = () => {
       </View>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   canvas: {

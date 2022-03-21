@@ -10,6 +10,7 @@ MERGED from [com.facebook.flipper:flipper-network-plugin:0.99.0] /Users/adhiindr
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.99.0] /Users/adhiindra/.gradle/caches/transforms-3/d1f78a3bfe608333c8a8682ec4347618/transformed/jetified-flipper-fresco-plugin-0.99.0/AndroidManifest.xml:8:1-15:12
 MERGED from [:react-native-async-storage_async-storage] /Users/adhiindra/Documents/TestRun/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-community_datetimepicker] /Users/adhiindra/Documents/TestRun/node_modules/@react-native-community/datetimepicker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-background-timer] /Users/adhiindra/Documents/TestRun/node_modules/react-native-background-timer/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-safe-area-context] /Users/adhiindra/Documents/TestRun/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] /Users/adhiindra/Documents/TestRun/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-vector-icons] /Users/adhiindra/Documents/TestRun/node_modules/react-native-vector-icons/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
@@ -171,6 +172,8 @@ MERGED from [:react-native-async-storage_async-storage] /Users/adhiindra/Documen
 MERGED from [:react-native-async-storage_async-storage] /Users/adhiindra/Documents/TestRun/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_datetimepicker] /Users/adhiindra/Documents/TestRun/node_modules/@react-native-community/datetimepicker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_datetimepicker] /Users/adhiindra/Documents/TestRun/node_modules/@react-native-community/datetimepicker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-background-timer] /Users/adhiindra/Documents/TestRun/node_modules/react-native-background-timer/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-background-timer] /Users/adhiindra/Documents/TestRun/node_modules/react-native-background-timer/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] /Users/adhiindra/Documents/TestRun/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] /Users/adhiindra/Documents/TestRun/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] /Users/adhiindra/Documents/TestRun/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
@@ -305,3 +308,7 @@ uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from [com.facebook.flipper:flipper:0.99.0] /Users/adhiindra/.gradle/caches/transforms-3/df7b208c45426f45016d16c0c3a6a059/transformed/jetified-flipper-0.99.0/AndroidManifest.xml:16:5-76
 	android:name
 		ADDED from [com.facebook.flipper:flipper:0.99.0] /Users/adhiindra/.gradle/caches/transforms-3/df7b208c45426f45016d16c0c3a6a059/transformed/jetified-flipper-0.99.0/AndroidManifest.xml:16:22-73
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [:react-native-background-timer] /Users/adhiindra/Documents/TestRun/node_modules/react-native-background-timer/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-68
+	android:name
+		ADDED from [:react-native-background-timer] /Users/adhiindra/Documents/TestRun/node_modules/react-native-background-timer/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-65
