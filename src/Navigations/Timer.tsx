@@ -1,9 +1,9 @@
 import {observer} from 'mobx-react-lite';
 import React, {useCallback, useEffect, useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
-import BackgroundTimer from 'react-native-background-timer';
 import {useStoreTodo} from '../TodoData';
 import {clockify, formatDecimals, getDateSeconds} from '../utils/format';
+import {displayNotifications} from '../utils/notification';
 
 const Timer = observer(() => {
   const {time} = useStoreTodo();
@@ -14,8 +14,44 @@ const Timer = observer(() => {
     setTimerOn,
     setStartDate,
     startDate,
+    isFirstStart,
+    setIsFirstStart,
+    
   } = time;
   const [displayTime, setDisplayTime] = useState(0);
+  const [title, setTitle] = useState('LETS GO WORK!');
+
+  const startTimer = () => {
+    let body = '';
+    let time = 0;
+    if(isFirstStart){
+      body = 'LETS GET REST!';
+      setTitle('ON WORKING!');
+      time = 100;
+      setTimeStart(100);
+    }else{
+      body = 'LETS GET WORK!';
+      setTitle('RESTING!');
+      time = 200;
+      setTimeStart(200);
+    }
+  
+    displayNotifications(body,time);
+    setStartDate(getDateSeconds());
+    setTimerOn(true);
+  };
+
+  const checkDone = () => {
+    if (isFirstStart) {
+      setIsFirstStart(false)
+      setTitle('LETS GET REST!');
+      setTimerOn(false);
+    } else {
+      setIsFirstStart(true);
+      setTitle('LETS GET WORK!');
+      setTimerOn(false);
+    }
+  }
 
   React.useEffect(() => {
     const timeDate = setInterval(() => {
@@ -23,12 +59,14 @@ const Timer = observer(() => {
         timerOn &&
         formatDecimals(startDate + timeStart - getDateSeconds()) >= 0
       ) {
-        console.log(startDate + timeStart - getDateSeconds());
         setDisplayTime(
           formatDecimals(startDate + timeStart - getDateSeconds()),
         );
       } else {
-        clearInterval(timeDate);
+        if (timerOn) {
+          checkDone();
+        }
+        // clearInterval(timeDate);
       }
       console.log(startDate + timeStart - getDateSeconds());
     }, 1000);
@@ -40,16 +78,29 @@ const Timer = observer(() => {
 
   return (
     <View style={styles.canvas}>
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginTop: 100,
-        }}>
-        <Text style={styles.timer}>
-          {displayHours}:{displayMins}:{displaySecs}
-        </Text>
+      <View>
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: 100,
+          }}>
+          <Text style={styles.timer}>
+            {displayHours}:{displayMins}:{displaySecs}
+          </Text>
+        </View>
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: 30,
+          }}>
+          <Text style={{fontWeight: 'bold', color: 'orange', fontSize: 25}}>
+            {title}
+          </Text>
+        </View>
       </View>
+
       <View
         style={{
           flexDirection: 'row',
@@ -58,20 +109,19 @@ const Timer = observer(() => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            setStartDate(getDateSeconds());
-            setTimerOn(true);
+            timerOn ? setTimerOn(false) : startTimer();
           }}>
           <View style={styles.btn}>
-            <Text style={styles.btnText}>START</Text>
+            <Text style={styles.btnText}>{timerOn ? 'PAUSE' : 'START'}</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             setTimerOn(false);
-            setTimeStart(10);
+            setIsFirstStart(true);
           }}>
           <View style={styles.btn}>
-            <Text style={styles.btnText}>STOP</Text>
+            <Text style={styles.btnText}>RESET</Text>
           </View>
         </TouchableOpacity>
       </View>

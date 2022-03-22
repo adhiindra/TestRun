@@ -12,7 +12,14 @@ import Timer from './Timer';
 const Tab = createMaterialBottomTabNavigator();
 
 const Home = observer(() => {
-  const {todos, deleteTodo, updateStatusTodo, checkStatus} = useStoreTodo();
+  const {
+    todos,
+    deleteTodo,
+    updateStatusTodo,
+    checkStatus,
+    overdueStatus,
+    overdueStatusUpdate,
+  } = useStoreTodo();
   const [extraDataDate, setExtraDataDate] = useState(new Date());
 
   const updateList = (id: number, status: string) => {
@@ -25,14 +32,19 @@ const Home = observer(() => {
     setExtraDataDate(new Date());
   };
 
-  const checkOverdue = (id: number, date:Date) => {
-    if(date < new Date(Date.now())){
-      updateStatusTodo(id, 'OVERDUE')
-      return checkStatus(id)
-    }else{
-      return checkStatus(id)
+  const checkOverdue = (id: number, date: Date) => {
+    if (overdueStatus(id) == 0) {
+      if (date < new Date(Date.now())) {
+        updateStatusTodo(id, 'OVERDUE');
+        overdueStatusUpdate(id, 1)
+        return checkStatus(id);
+      }else{
+        return checkStatus(id);
+      }
+    } else {
+      return checkStatus(id);
     }
-  }
+  };
 
   return (
     <View>
@@ -59,9 +71,10 @@ const Home = observer(() => {
                   <View
                     style={{
                       backgroundColor:
-                      checkOverdue(item.id, new Date(item.date)) === 'OPEN'
+                        checkOverdue(item.id, new Date(item.date)) === 'OPEN'
                           ? '#C4C4C4'
-                          : checkOverdue(item.id, new Date(item.date)) === 'DONE'
+                          : checkOverdue(item.id, new Date(item.date)) ===
+                            'DONE'
                           ? '#39C36D'
                           : '#C33939',
                       paddingHorizontal: 18,
@@ -102,7 +115,9 @@ const Home = observer(() => {
                     }}>
                     <View style={{marginTop: 10}}>
                       <Text style={styles.cardDescription}>Due Date:</Text>
-                      <Text style={styles.cardDescription}>{moment(item.date).format('DD-MM-YYYY, h:mm')}</Text>
+                      <Text style={styles.cardDescription}>
+                        {moment(item.date).format('DD-MM-YYYY, h:mm')}
+                      </Text>
                     </View>
                     {checkOverdue(item.id, new Date(item.date)) != 'DONE' && (
                       <TouchableOpacity

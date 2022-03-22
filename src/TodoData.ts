@@ -2,36 +2,40 @@ import {Instance, onSnapshot, types} from 'mobx-state-tree';
 import {createContext, useContext} from 'react';
 import {remove, load, save} from './utils/storage';
 
-const Timer = types.model({
-  timeStart: types.number,
-  timerOn : types.boolean,
-  startDate: types.number,
-}).actions(self => ({
-  setTimeStart: (secs : number) => {
-    self.timeStart = secs
-  },
-  setTimerOn :  (x : boolean) => {
-    self.timerOn = x
-  },
-  setStartDate :  (x : number) => {
-    self.startDate = x
-  }
-}))
+const Timer = types
+  .model({
+    timeStart: types.number,
+    timerOn: types.boolean,
+    startDate: types.number,
+    isFirstStart: types.boolean
+  })
+  .actions(self => ({
+    setTimeStart: (secs: number) => {
+      self.timeStart = secs;
+    },
+    setTimerOn: (x: boolean) => {
+      self.timerOn = x;
+    },
+    setStartDate: (x: number) => {
+      self.startDate = x;
+    },
+    setIsFirstStart: (x: boolean) => {
+      self.isFirstStart = x
+    }
+  }));
 
 const Todo = types.model({
   id: types.number,
   title: types.string,
   date: types.Date,
   status: types.string,
-  
+  overdue: types.number,
 });
-
-
 
 const TodoData = types
   .model({
     todos: types.maybeNull(types.array(Todo)),
-    time: Timer
+    time: Timer,
   })
   .actions(self => ({
     addTodo: (title: string, date: Date, status: string) => {
@@ -41,6 +45,7 @@ const TodoData = types
         title: title,
         date: date,
         status: status,
+        overdue: 0,
       });
       self.todos = tempTodos;
     },
@@ -70,6 +75,24 @@ const TodoData = types
         .indexOf(id);
       return self.todos[index].status;
     },
+    overdueStatusUpdate: (id: number, status: number) => {
+      let tempTodos: any = self.todos || [];
+      const index = tempTodos
+        .map(function (x) {
+          return x.id;
+        })
+        .indexOf(id);
+      self.todos[index].overdue = status;
+    },
+    overdueStatus: (id: number) => {
+      let tempTodos: any = self.todos || [];
+      const index = tempTodos
+        .map(function (x) {
+          return x.id;
+        })
+        .indexOf(id);
+      return self.todos[index].overdue;
+    },
   }));
 
 export interface TodoType extends Instance<typeof Todo> {}
@@ -92,11 +115,12 @@ export async function setupTodoStore() {
   } catch (e) {
     useStoreTodo = TodoData.create({
       todos: null,
-      time : {
+      time: {
         timeStart: 10,
-        timerOn : false,
-        startDate: 0
-      }
+        timerOn: false,
+        startDate: 0,
+        isFirstStart: true,
+      },
     });
   }
   onSnapshot(useStoreTodo, snapshot => {
