@@ -7,7 +7,9 @@ const Timer = types
     timeStart: types.number,
     timerOn: types.boolean,
     startDate: types.number,
-    isFirstStart: types.boolean
+    isFirstStart: types.boolean,
+    displayTime : types.number,
+    title : types.string,
   })
   .actions(self => ({
     setTimeStart: (secs: number) => {
@@ -21,6 +23,12 @@ const Timer = types
     },
     setIsFirstStart: (x: boolean) => {
       self.isFirstStart = x
+    },
+    setDisplayTime: (x: number) => {
+      self.displayTime = x
+    },
+    setTitle: (x: string) => {
+      self.title = x
     }
   }));
 
@@ -120,6 +128,8 @@ export async function setupTodoStore() {
         timerOn: false,
         startDate: 0,
         isFirstStart: true,
+        displayTime: 100,
+        title: 'LETS GO WORK!'
       },
     });
   }

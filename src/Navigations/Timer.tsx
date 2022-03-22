@@ -16,10 +16,12 @@ const Timer = observer(() => {
     startDate,
     isFirstStart,
     setIsFirstStart,
+    displayTime,
+    setDisplayTime,
+    title,
+    setTitle
     
   } = time;
-  const [displayTime, setDisplayTime] = useState(0);
-  const [title, setTitle] = useState('LETS GO WORK!');
 
   const startTimer = () => {
     let body = '';
@@ -30,7 +32,7 @@ const Timer = observer(() => {
       time = 100;
       setTimeStart(100);
     }else{
-      body = 'LETS GET WORK!';
+      body = 'LETS GO WORK!';
       setTitle('RESTING!');
       time = 200;
       setTimeStart(200);
@@ -45,10 +47,12 @@ const Timer = observer(() => {
     if (isFirstStart) {
       setIsFirstStart(false)
       setTitle('LETS GET REST!');
+      setDisplayTime(200);
       setTimerOn(false);
     } else {
       setIsFirstStart(true);
-      setTitle('LETS GET WORK!');
+      setTitle('LETS GO WORK!');
+      setDisplayTime(100);
       setTimerOn(false);
     }
   }

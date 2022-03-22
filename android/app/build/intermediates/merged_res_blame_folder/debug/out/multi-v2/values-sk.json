@@ -4,7 +4,7 @@
             "outputFile": "/Users/adhiindra/Documents/TestRun/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sk/values-sk.xml",
             "map": [
                 {
-                    "source": "/Users/adhiindra/.gradle/caches/transforms-3/540dbfb90b248d7b59cd154497c15f99/transformed/core-1.5.0/res/values-sk/values-sk.xml",
+                    "source": "/Users/adhiindra/.gradle/caches/transforms-3/9f18c6b50baa776d71894ad120630276/transformed/core-1.6.0/res/values-sk/values-sk.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -13,11 +13,45 @@
                         "endOffsets": "151"
                     },
                     "to": {
+                        "startLines": "32",
+                        "startColumns": "4",
+                        "startOffsets": "3143",
+                        "endColumns": "100",
+                        "endOffsets": "3239"
+                    }
+                },
+                {
+                    "source": "/Users/adhiindra/.gradle/caches/transforms-3/f5d029dcc6be4a31d5a579fcfba539f6/transformed/jetified-play-services-basement-18.0.0/res/values-sk/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "134",
+                        "endOffsets": "329"
+                    },
+                    "to": {
+                        "startLines": "29",
+                        "startColumns": "4",
+                        "startOffsets": "2817",
+                        "endColumns": "138",
+                        "endOffsets": "2951"
+                    }
+                },
+                {
+                    "source": "/Users/adhiindra/.gradle/caches/transforms-3/33bc54ad3f6bbb91bcabb9f93aacc8aa/transformed/jetified-firebase-messaging-21.1.0/res/values-sk/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "207",
+                        "endColumns": "99",
+                        "endOffsets": "306"
+                    },
+                    "to": {
                         "startLines": "30",
                         "startColumns": "4",
-                        "startOffsets": "2900",
-                        "endColumns": "100",
-                        "endOffsets": "2996"
+                        "startOffsets": "2956",
+                        "endColumns": "103",
+                        "endOffsets": "3055"
                     }
                 },
                 {
@@ -28,6 +62,13 @@
                         "startOffsets": "105,212,313,424,510,618,736,815,892,983,1076,1174,1268,1368,1461,1556,1654,1745,1836,1920,2025,2133,2232,2338,2450,2553,2719,2817",
                         "endColumns": "106,100,110,85,107,117,78,76,90,92,97,93,99,92,94,97,90,90,83,104,107,98,105,111,102,165,97,82",
                         "endOffsets": "207,308,419,505,613,731,810,887,978,1071,1169,1263,1363,1456,1551,1649,1740,1831,1915,2020,2128,2227,2333,2445,2548,2714,2812,2895"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,31",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,212,313,424,510,618,736,815,892,983,1076,1174,1268,1368,1461,1556,1654,1745,1836,1920,2025,2133,2232,2338,2450,2553,2719,3060",
+                        "endColumns": "106,100,110,85,107,117,78,76,90,92,97,93,99,92,94,97,90,90,83,104,107,98,105,111,102,165,97,82",
+                        "endOffsets": "207,308,419,505,613,731,810,887,978,1071,1169,1263,1363,1456,1551,1649,1740,1831,1915,2020,2128,2227,2333,2445,2548,2714,2812,3138"
                     }
                 }
             ]
