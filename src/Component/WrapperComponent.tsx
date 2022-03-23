@@ -12,7 +12,7 @@ import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useStoreTodo} from '../TodoData';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 const WrapperComponent = () => {
   const [title, setTitle] = useState('');
@@ -39,8 +39,8 @@ const WrapperComponent = () => {
   };
 
   const addData = () => {
-    let dateFormat: string = moment(datenow).format('DD/MM/YYYY').toString();
-    let timeFormat: string = moment(datenow).format('h:mm').toString();
+    let dateFormat: string = dayjs(datenow).format('DD/MM/YYYY').toString();
+    let timeFormat: string = dayjs(datenow).format('h:mm').toString();
     addTodo(title, datenow, 'OPEN');
     toggleModal();
   };
@@ -105,7 +105,7 @@ const WrapperComponent = () => {
                       borderRadius: 8,
                     }}>
                     <Text style={{color: 'white', fontSize: 15}}>
-                      {moment(datenow).format('MMMM DD,YYYY')}
+                      {dayjs(datenow).format('MMMM DD,YYYY')}
                     </Text>
                   </View>
                 </TouchableOpacity>

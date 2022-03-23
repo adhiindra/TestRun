@@ -1,3 +1,5 @@
+import dayjs from "dayjs"
+
 export const clockify = (secNumber : number) => {
     let hours = Math.floor(secNumber / 60 / 60)
     let mins = Math.floor((secNumber / 60) % 60)
@@ -18,4 +20,8 @@ export const clockify = (secNumber : number) => {
 
   export const formatDecimals = (decNumber : number) => {
       return parseInt(decNumber.toFixed(0), 10) 
+  }
+
+  export const secToMins = (secNumber: string) => {
+    return Math.floor(parseInt(secNumber)  / 60).toString()
   }

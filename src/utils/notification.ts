@@ -1,5 +1,9 @@
 import notifee, {TimestampTrigger, TriggerType} from '@notifee/react-native';
 
+export async function cancelNotification() {
+  await notifee.cancelNotification('timer');
+}
+
 export async function displayNotifications(body: string, time: number) {
   const date = new Date(Date.now());
   date.setSeconds(date.getSeconds() + time);

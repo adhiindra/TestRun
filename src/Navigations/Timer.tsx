@@ -3,7 +3,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 import {useStoreTodo} from '../TodoData';
 import {clockify, formatDecimals, getDateSeconds} from '../utils/format';
-import {displayNotifications} from '../utils/notification';
+import {displayNotifications, cancelNotification} from '../utils/notification';
 
 const Timer = observer(() => {
   const {time} = useStoreTodo();
@@ -19,40 +19,71 @@ const Timer = observer(() => {
     displayTime,
     setDisplayTime,
     title,
-    setTitle
-    
+    setTitle,
+    workingTime,
+    restingTime,
+    customTime,
+    isPause,
+    setIsPause,
+    pauseTimer,
+    setPauseTimer,
+    notifTitle,
+    setNotifTitle
   } = time;
 
   const startTimer = () => {
-    let body = '';
     let time = 0;
     if(isFirstStart){
-      body = 'LETS GET REST!';
+      setNotifTitle('LETS GET REST!');
       setTitle('ON WORKING!');
-      time = 100;
-      setTimeStart(100);
+      time = customTime? workingTime : 2500;
+      setTimeStart(time);
     }else{
-      body = 'LETS GO WORK!';
+      setNotifTitle('LETS GO WORK!');
       setTitle('RESTING!');
-      time = 200;
-      setTimeStart(200);
+      time = customTime? restingTime : 300;
+      setTimeStart(time);
     }
   
-    displayNotifications(body,time);
+    displayNotifications(notifTitle,time);
     setStartDate(getDateSeconds());
     setTimerOn(true);
   };
+
+  const displayTimeWorking = () => {
+    return setDisplayTime(customTime? workingTime : 2500);
+  }
+
+  const displayTimeResting = () => {
+    return setDisplayTime(customTime? restingTime : 300);
+  }
+
+  const pauseTime = () => {
+    setTimerOn(false);
+    cancelNotification();
+    setPauseTimer(startDate + timeStart - getDateSeconds())
+    setIsPause(true);
+  }
+
+  const unPauseTime = () => {
+    setTimerOn(true);
+    setTimeStart(pauseTimer);
+    setStartDate(getDateSeconds());
+    displayNotifications(notifTitle, getDateSeconds() + pauseTimer - getDateSeconds());
+    setIsPause(false);
+  }
+
 
   const checkDone = () => {
     if (isFirstStart) {
       setIsFirstStart(false)
       setTitle('LETS GET REST!');
-      setDisplayTime(200);
+      displayTimeResting();
       setTimerOn(false);
     } else {
       setIsFirstStart(true);
       setTitle('LETS GO WORK!');
-      setDisplayTime(100);
+      displayTimeWorking();
       setTimerOn(false);
     }
   }
@@ -70,7 +101,6 @@ const Timer = observer(() => {
         if (timerOn) {
           checkDone();
         }
-        // clearInterval(timeDate);
       }
       console.log(startDate + timeStart - getDateSeconds());
     }, 1000);
@@ -113,7 +143,7 @@ const Timer = observer(() => {
         }}>
         <TouchableOpacity
           onPress={() => {
-            timerOn ? setTimerOn(false) : startTimer();
+            timerOn ? pauseTime() : isPause ? unPauseTime() : startTimer();
           }}>
           <View style={styles.btn}>
             <Text style={styles.btnText}>{timerOn ? 'PAUSE' : 'START'}</Text>
@@ -122,7 +152,8 @@ const Timer = observer(() => {
         <TouchableOpacity
           onPress={() => {
             setTimerOn(false);
-            setIsFirstStart(true);
+            isFirstStart ? displayTimeWorking() : displayTimeResting()
+            cancelNotification();
           }}>
           <View style={styles.btn}>
             <Text style={styles.btnText}>RESET</Text>

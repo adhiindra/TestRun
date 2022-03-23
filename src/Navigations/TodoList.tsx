@@ -6,8 +6,8 @@ import Setting from './Setting';
 import WrapperComponent from '../Component/WrapperComponent';
 import {observer} from 'mobx-react-lite';
 import {useStoreTodo} from '../TodoData';
-import moment from 'moment';
 import Timer from './Timer';
+import dayjs from 'dayjs';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -116,7 +116,7 @@ const Home = observer(() => {
                     <View style={{marginTop: 10}}>
                       <Text style={styles.cardDescription}>Due Date:</Text>
                       <Text style={styles.cardDescription}>
-                        {moment(item.date).format('DD-MM-YYYY, h:mm')}
+                        {dayjs(item.date).format('DD-MM-YYYY, h:mm')}
                       </Text>
                     </View>
                     {checkOverdue(item.id, new Date(item.date)) != 'DONE' && (

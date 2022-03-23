@@ -10,6 +10,12 @@ const Timer = types
     isFirstStart: types.boolean,
     displayTime : types.number,
     title : types.string,
+    workingTime: types.number,
+    restingTime: types.number,
+    customTime: types.boolean,
+    isPause: types.boolean,
+    pauseTimer: types.number,
+    notifTitle: types.string
   })
   .actions(self => ({
     setTimeStart: (secs: number) => {
@@ -29,6 +35,24 @@ const Timer = types
     },
     setTitle: (x: string) => {
       self.title = x
+    },
+    setWorkingTime: (x: number) => {
+      self.workingTime = x
+    },
+    setRestingTime: (x: number) => {
+      self.restingTime = x
+    },
+    setCustomTime: (x: boolean) => {
+      self.customTime = x
+    },
+    setIsPause: (x: boolean) => {
+      self.isPause = x
+    },
+    setPauseTimer: (x: number) => {
+      self.pauseTimer = x
+    },
+    setNotifTitle: (x: string) => {
+      self.notifTitle = x
     }
   }));
 
@@ -128,11 +152,18 @@ export async function setupTodoStore() {
         timerOn: false,
         startDate: 0,
         isFirstStart: true,
-        displayTime: 100,
-        title: 'LETS GO WORK!'
+        displayTime: 2500,
+        title: 'LETS GO WORK!',
+        workingTime: 2500,
+        restingTime: 300,
+        customTime: false,
+        isPause: false,
+        pauseTimer: 0,
+        notifTitle: "",
       },
     });
   }
+  
   onSnapshot(useStoreTodo, snapshot => {
     save('TodoStorage', snapshot);
     console.log(snapshot);

@@ -1,6 +1,7 @@
 import React, {useLayoutEffect, useState} from 'react';
 import {
   DarkTheme,
+  DefaultTheme,
   NavigationContainer,
 } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -8,6 +9,7 @@ import TodoList from './src/Navigations/TodoList';
 import Login from './src/Navigations/Login';
 import {setupTodoStore, TodoDataProvider, TodoDataType} from './src/TodoData';
 import {StatusBar} from 'react-native';
+import { darkTheme, defaultTheme } from '@react-native-material/core';
 
 const Stack = createNativeStackNavigator();
 
