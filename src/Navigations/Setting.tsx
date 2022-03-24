@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  Alert,
   ScrollView,
   StyleSheet,
   Text,
@@ -8,10 +9,10 @@ import {
 } from 'react-native';
 import {Switch, TextInput} from 'react-native-paper';
 import {useStoreTodo} from '../TodoData';
-import { secToMins } from '../utils/format';
+import {secToMins} from '../utils/format';
 
 const Setting = ({navigation}: {navigation: any}) => {
-  const {time} = useStoreTodo();
+  const {time, logins} = useStoreTodo();
   const {
     workingTime,
     setWorkingTime,
@@ -20,16 +21,54 @@ const Setting = ({navigation}: {navigation: any}) => {
     customTime,
     setCustomTime,
   } = time;
-  const [inWorkingTime, setInWorkingTime] = useState(workingTime.toString());
-  const [inRestingTime, setInRestingTime] = useState(restingTime.toString());
+  const {setIsLogin} = logins;
+  const [inWorkingTime, setInWorkingTime] = useState(secToMins(workingTime.toString()));
+  const [inRestingTime, setInRestingTime] = useState(secToMins(restingTime.toString()));
   const [isEnabled, setIsEnabled] = useState(customTime);
   const toggleSwitch = () => {
     setCustomTime(!customTime);
     setIsEnabled(!isEnabled);
   };
   const saveSetting = () => {
-    setWorkingTime(Math.floor(parseInt(inWorkingTime) * 60));
-    setRestingTime(Math.floor(parseInt(inRestingTime) * 60));
+    return Alert.alert(
+      'Timer Setting',
+      'Are you sure want to save this setting ?',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => {console.log(inWorkingTime, inRestingTime)},
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: () => {
+            setWorkingTime(Math.floor(parseInt(inWorkingTime) * 60));
+            setRestingTime(Math.floor(parseInt(inRestingTime) * 60));
+          },
+        },
+      ],
+    );
+  };
+
+  const Logout = () => {
+    return Alert.alert(
+      'TodoList Apps',
+      'Are you sure want to Logout ?',
+      [
+        {
+          text: 'OK',
+          onPress: () => {
+            setIsLogin(false), navigation.navigate('Login');
+          },
+        },
+        {
+          text: 'Cancel',
+          onPress: () => {},
+          style: 'cancel',
+        },
+        
+      ],
+    );
   };
 
   return (
@@ -75,17 +114,16 @@ const Setting = ({navigation}: {navigation: any}) => {
             <View style={{backgroundColor: 'transparent'}}>
               <TextInput
                 style={{
-                  backgroundColor: 'rgba(0,0,0,0.0)', // 40% opaque
+                  backgroundColor: 'rgba(0,0,0,0.0)',
                   width: 70,
                   height: 30,
                   textAlign: 'center',
                 }}
                 keyboardType={'numeric'}
                 onChangeText={inWorkingTime => setInWorkingTime(inWorkingTime)}
-                placeholder={secToMins(inWorkingTime)}
+                defaultValue={inWorkingTime}
               />
             </View>
-            {/* isi disini test */}
           </View>
           <View style={styles.divider} />
           <View
@@ -100,17 +138,16 @@ const Setting = ({navigation}: {navigation: any}) => {
             <View style={{backgroundColor: 'transparent'}}>
               <TextInput
                 style={{
-                  backgroundColor: 'rgba(0,0,0,0.0)', // 40% opaque
+                  backgroundColor: 'rgba(0,0,0,0.0)',
                   width: 70,
                   height: 30,
                   textAlign: 'center',
                 }}
                 keyboardType={'numeric'}
                 onChangeText={inRestingTime => setInRestingTime(inRestingTime)}
-                placeholder={secToMins(inRestingTime)}
+                defaultValue={inRestingTime}
               />
             </View>
-            {/* test isi disini */}
           </View>
           <View style={styles.divider} />
         </View>
@@ -127,10 +164,6 @@ const Setting = ({navigation}: {navigation: any}) => {
       </ScrollView>
     </View>
   );
-
-  function Logout() {
-    return navigation.navigate('Login');
-  }
 };
 
 const styles = StyleSheet.create({

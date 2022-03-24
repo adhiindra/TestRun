@@ -1,15 +1,15 @@
 import React, {useLayoutEffect, useState} from 'react';
-import {
-  DarkTheme,
-  DefaultTheme,
-  NavigationContainer,
-} from '@react-navigation/native';
+import {DarkTheme, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TodoList from './src/Navigations/TodoList';
 import Login from './src/Navigations/Login';
-import {setupTodoStore, TodoDataProvider, TodoDataType} from './src/TodoData';
+import {
+  setupTodoStore,
+  TodoDataProvider,
+  TodoDataType,
+  useStoreTodo,
+} from './src/TodoData';
 import {StatusBar} from 'react-native';
-import { darkTheme, defaultTheme } from '@react-native-material/core';
 
 const Stack = createNativeStackNavigator();
 
@@ -41,7 +41,7 @@ const App = () => {
   return (
     <TodoDataProvider value={todoStore}>
       <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator initialRouteName="TodoList">
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen
             name="TodoList"

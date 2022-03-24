@@ -21,11 +21,19 @@ const WrapperComponent = () => {
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [isDateVisible, setDateVisible] = useState(false);
-
-  const onChange = (event, value) => {
+  const [isTimeVisible, setTimeVisible] = useState(false);
+  
+  const onChangeDate = (event, value) => {
     setDatenow(value);
-    if(Platform.OS === 'android'){
+    if (Platform.OS === 'android') {
       setDateVisible(false);
+    }
+  };
+
+  const onChangeTime = (event, value) => {
+    setDatenow(value);
+    if (Platform.OS === 'android') {
+      setTimeVisible(false);
     }
   };
 
@@ -34,8 +42,13 @@ const WrapperComponent = () => {
     setDatenow(new Date(Date.now()));
     setModalVisible(!isModalVisible);
   };
+
   const toggleDate = () => {
     setDateVisible(true);
+  };
+
+  const toggleTime = () => {
+    setTimeVisible(true);
   };
 
   const addData = () => {
@@ -84,41 +97,69 @@ const WrapperComponent = () => {
                 Select Date :
               </Text>
               {Platform.OS === 'android' && (
-                <TouchableOpacity onPress={toggleDate}>
-                  {isDateVisible && (
-                    <View style={styles.timepicker}>
-                      <DateTimePicker
-                        value={datenow}
-                        mode={'date'}
-                        minimumDate={new Date()}
-                        display={'default'}
-                        themeVariant={'dark'}
-                        onChange={onChange}
-                      />
+                <View style={{flexDirection:"row"}}>
+                  <TouchableOpacity onPress={toggleDate} style={{marginRight:5}}>
+                    {isDateVisible && (
+                      <View style={styles.timepicker}>
+                        <DateTimePicker
+                          value={datenow}
+                          mode={'date'}
+                          minimumDate={new Date()}
+                          display={'default'}
+                          themeVariant={'dark'}
+                          onChange={onChangeDate}
+                        />
+                      </View>
+                    )}
+                    <View
+                      style={{
+                        backgroundColor: '#40444B',
+                        paddingHorizontal: 8,
+                        paddingVertical: 5,
+                        borderRadius: 8,
+                      }}>
+                      <Text style={{color: 'white', fontSize: 15}}>
+                        {dayjs(datenow).format('MM/DD/YYYY')}
+                      </Text>
                     </View>
-                  )}
-                  <View
-                    style={{
-                      backgroundColor: '#40444B',
-                      paddingHorizontal: 8,
-                      paddingVertical: 5,
-                      borderRadius: 8,
-                    }}>
-                    <Text style={{color: 'white', fontSize: 15}}>
-                      {dayjs(datenow).format('MMMM DD,YYYY')}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity onPress={toggleTime}>
+                    {isTimeVisible && (
+                      <View style={styles.timepicker}>
+                        <DateTimePicker
+                          value={datenow}
+                          mode={'time'}
+                          minimumDate={new Date()}
+                          display={'default'}
+                          themeVariant={'dark'}
+                          onChange={onChangeTime}
+                        />
+                      </View>
+                    )}
+                    <View
+                      style={{
+                        backgroundColor: '#40444B',
+                        paddingHorizontal: 8,
+                        paddingVertical: 5,
+                        borderRadius: 8,
+                      }}>
+                      <Text style={{color: 'white', fontSize: 15}}>
+                        {dayjs(datenow).format('hh:mm A')}
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
               )}
               {Platform.OS === 'ios' && (
                 <View style={styles.timepicker_ios}>
                   <DateTimePicker
                     value={datenow}
-                    mode={'date'}
+                    mode={'datetime'}
                     minimumDate={new Date()}
                     display={'default'}
                     themeVariant={'dark'}
-                    onChange={onChange}
+                    onChange={onChangeDate}
                   />
                 </View>
               )}
@@ -127,7 +168,7 @@ const WrapperComponent = () => {
           <View
             style={{
               flexDirection: 'column',
-              marginTop: 10,
+              marginTop: 20,
               alignItems: 'center',
             }}>
             <View style={{width: 150, marginBottom: 10}}>
@@ -170,7 +211,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   timepicker_ios: {
-    width:200,
+    width: 200,
     justifyContent: 'center',
   },
 });

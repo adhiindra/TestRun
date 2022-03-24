@@ -8,14 +8,14 @@ const Timer = types
     timerOn: types.boolean,
     startDate: types.number,
     isFirstStart: types.boolean,
-    displayTime : types.number,
-    title : types.string,
+    displayTime: types.number,
+    title: types.string,
     workingTime: types.number,
     restingTime: types.number,
     customTime: types.boolean,
     isPause: types.boolean,
     pauseTimer: types.number,
-    notifTitle: types.string
+    progValue: types.number,
   })
   .actions(self => ({
     setTimeStart: (secs: number) => {
@@ -28,32 +28,42 @@ const Timer = types
       self.startDate = x;
     },
     setIsFirstStart: (x: boolean) => {
-      self.isFirstStart = x
+      self.isFirstStart = x;
     },
     setDisplayTime: (x: number) => {
-      self.displayTime = x
+      self.displayTime = x;
     },
     setTitle: (x: string) => {
-      self.title = x
+      self.title = x;
     },
     setWorkingTime: (x: number) => {
-      self.workingTime = x
+      self.workingTime = x;
     },
     setRestingTime: (x: number) => {
-      self.restingTime = x
+      self.restingTime = x;
     },
     setCustomTime: (x: boolean) => {
-      self.customTime = x
+      self.customTime = x;
     },
     setIsPause: (x: boolean) => {
-      self.isPause = x
+      self.isPause = x;
     },
     setPauseTimer: (x: number) => {
-      self.pauseTimer = x
+      self.pauseTimer = x;
     },
-    setNotifTitle: (x: string) => {
-      self.notifTitle = x
+    setProgValue: (x: number) => {
+      self.progValue = x;
     }
+  }));
+
+const Login = types
+  .model({
+    isLogin: types.boolean,
+  })
+  .actions(self => ({
+    setIsLogin: (x: boolean) => {
+      self.isLogin = x;
+    },
   }));
 
 const Todo = types.model({
@@ -68,6 +78,7 @@ const TodoData = types
   .model({
     todos: types.maybeNull(types.array(Todo)),
     time: Timer,
+    logins: Login,
   })
   .actions(self => ({
     addTodo: (title: string, date: Date, status: string) => {
@@ -147,23 +158,26 @@ export async function setupTodoStore() {
   } catch (e) {
     useStoreTodo = TodoData.create({
       todos: null,
+      logins: {
+        isLogin: false,
+      },
       time: {
         timeStart: 10,
         timerOn: false,
         startDate: 0,
         isFirstStart: true,
-        displayTime: 2500,
+        displayTime: 1500,
         title: 'LETS GO WORK!',
-        workingTime: 2500,
+        workingTime: 1500,
         restingTime: 300,
         customTime: false,
         isPause: false,
         pauseTimer: 0,
-        notifTitle: "",
+        progValue: 1500,
       },
     });
   }
-  
+
   onSnapshot(useStoreTodo, snapshot => {
     save('TodoStorage', snapshot);
     console.log(snapshot);

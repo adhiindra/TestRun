@@ -2,10 +2,18 @@ import {TextInput} from '@react-native-material/core';
 import React, {useState} from 'react';
 import {Alert, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useStoreTodo } from '../TodoData';
 
 const Login = ({navigation}: {navigation: any}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const {logins} = useStoreTodo();
+  const {isLogin, setIsLogin} = logins;
+
+  React.useEffect(() => {
+    isLogin ? navigation.navigate('TodoList') : {}
+  })
 
   return (
     <View style={styles.container}>
@@ -42,7 +50,10 @@ const Login = ({navigation}: {navigation: any}) => {
     } else if (phoneNumberLength <= 6) {
       return Alert.alert('Invalid Password');
     } else {
-      return navigation.navigate('TodoList');
+      return (
+        setIsLogin(true),
+        navigation.navigate('TodoList')
+        );
     }
   }
 };

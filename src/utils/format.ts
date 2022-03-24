@@ -23,5 +23,7 @@ export const clockify = (secNumber : number) => {
   }
 
   export const secToMins = (secNumber: string) => {
-    return Math.floor(parseInt(secNumber)  / 60).toString()
+    return (
+      secNumber.length === 0 ? '' : Math.floor(parseInt(secNumber)  / 60).toString()
+    )
   }

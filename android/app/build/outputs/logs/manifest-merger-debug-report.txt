@@ -5,6 +5,7 @@ INJECTED from /Users/adhiindra/Documents/TestRun/android/app/src/main/AndroidMan
 INJECTED from /Users/adhiindra/Documents/TestRun/android/app/src/main/AndroidManifest.xml:1:1-27:12
 INJECTED from /Users/adhiindra/Documents/TestRun/android/app/src/main/AndroidManifest.xml:1:1-27:12
 MERGED from /Users/adhiindra/Documents/TestRun/android/app/src/main/AndroidManifest.xml:1:1-27:12
+MERGED from [hermes-debug.aar] /Users/adhiindra/.gradle/caches/transforms-3/0504fccc73c215f58f7aca6b95ef642f/transformed/jetified-hermes-debug/AndroidManifest.xml:2:1-7:12
 MERGED from [com.facebook.flipper:flipper:0.99.0] /Users/adhiindra/.gradle/caches/transforms-3/df7b208c45426f45016d16c0c3a6a059/transformed/jetified-flipper-0.99.0/AndroidManifest.xml:8:1-18:12
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.99.0] /Users/adhiindra/.gradle/caches/transforms-3/24c7b3b7628557c2352d51b3335f48b6/transformed/jetified-flipper-network-plugin-0.99.0/AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.99.0] /Users/adhiindra/.gradle/caches/transforms-3/d1f78a3bfe608333c8a8682ec4347618/transformed/jetified-flipper-fresco-plugin-0.99.0/AndroidManifest.xml:8:1-15:12
@@ -16,10 +17,11 @@ MERGED from [:react-native-notifications] /Users/adhiindra/Documents/TestRun/nod
 MERGED from [:react-native-push-notification] /Users/adhiindra/Documents/TestRun/node_modules/react-native-push-notification/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-safe-area-context] /Users/adhiindra/Documents/TestRun/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] /Users/adhiindra/Documents/TestRun/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-svg] /Users/adhiindra/Documents/TestRun/node_modules/react-native-svg/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-vector-icons] /Users/adhiindra/Documents/TestRun/node_modules/react-native-vector-icons/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.react:react-native:0.67.3] /Users/adhiindra/.gradle/caches/transforms-3/92ad874927ba6226f66e1447581633a4/transformed/jetified-react-native-0.67.3/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/adhiindra/.gradle/caches/transforms-3/2440439db2f6d9d5f76a90648980e461/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [org.webkit:android-jsc:r250230] /Users/adhiindra/.gradle/caches/transforms-3/b825e962adf445255b97861e91a2a884/transformed/jetified-android-jsc-r250230/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-reanimated] /Users/adhiindra/Documents/TestRun/node_modules/react-native-reanimated/android/build/.transforms/228153301aa118c315397c8338d7f0ae/transformed/jetified-react-native-reanimated-67-hermes/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:flipper:2.5.0] /Users/adhiindra/.gradle/caches/transforms-3/705daa35cfc508d545884e16a9ae76fc/transformed/jetified-flipper-2.5.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:stetho:2.5.0] /Users/adhiindra/.gradle/caches/transforms-3/3c07b8fb53743fa14ab68cadfbfb8166/transformed/jetified-stetho-2.5.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:fresco:2.5.0] /Users/adhiindra/.gradle/caches/transforms-3/6621840f9eac2a68a453a820def102cd/transformed/jetified-fresco-2.5.0/AndroidManifest.xml:2:1-9:12
@@ -252,6 +254,8 @@ uses-sdk
 INJECTED from /Users/adhiindra/Documents/TestRun/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/adhiindra/Documents/TestRun/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/adhiindra/Documents/TestRun/android/app/src/main/AndroidManifest.xml
+MERGED from [hermes-debug.aar] /Users/adhiindra/.gradle/caches/transforms-3/0504fccc73c215f58f7aca6b95ef642f/transformed/jetified-hermes-debug/AndroidManifest.xml:5:5-44
+MERGED from [hermes-debug.aar] /Users/adhiindra/.gradle/caches/transforms-3/0504fccc73c215f58f7aca6b95ef642f/transformed/jetified-hermes-debug/AndroidManifest.xml:5:5-44
 MERGED from [com.facebook.flipper:flipper:0.99.0] /Users/adhiindra/.gradle/caches/transforms-3/df7b208c45426f45016d16c0c3a6a059/transformed/jetified-flipper-0.99.0/AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper:0.99.0] /Users/adhiindra/.gradle/caches/transforms-3/df7b208c45426f45016d16c0c3a6a059/transformed/jetified-flipper-0.99.0/AndroidManifest.xml:11:5-13:41
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.99.0] /Users/adhiindra/.gradle/caches/transforms-3/24c7b3b7628557c2352d51b3335f48b6/transformed/jetified-flipper-network-plugin-0.99.0/AndroidManifest.xml:11:5-13:41
@@ -274,14 +278,16 @@ MERGED from [:react-native-safe-area-context] /Users/adhiindra/Documents/TestRun
 MERGED from [:react-native-safe-area-context] /Users/adhiindra/Documents/TestRun/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] /Users/adhiindra/Documents/TestRun/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] /Users/adhiindra/Documents/TestRun/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-svg] /Users/adhiindra/Documents/TestRun/node_modules/react-native-svg/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-svg] /Users/adhiindra/Documents/TestRun/node_modules/react-native-svg/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-vector-icons] /Users/adhiindra/Documents/TestRun/node_modules/react-native-vector-icons/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-vector-icons] /Users/adhiindra/Documents/TestRun/node_modules/react-native-vector-icons/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.react:react-native:0.67.3] /Users/adhiindra/.gradle/caches/transforms-3/92ad874927ba6226f66e1447581633a4/transformed/jetified-react-native-0.67.3/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.react:react-native:0.67.3] /Users/adhiindra/.gradle/caches/transforms-3/92ad874927ba6226f66e1447581633a4/transformed/jetified-react-native-0.67.3/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/adhiindra/.gradle/caches/transforms-3/2440439db2f6d9d5f76a90648980e461/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/adhiindra/.gradle/caches/transforms-3/2440439db2f6d9d5f76a90648980e461/transformed/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [org.webkit:android-jsc:r250230] /Users/adhiindra/.gradle/caches/transforms-3/b825e962adf445255b97861e91a2a884/transformed/jetified-android-jsc-r250230/AndroidManifest.xml:7:5-9:41
-MERGED from [org.webkit:android-jsc:r250230] /Users/adhiindra/.gradle/caches/transforms-3/b825e962adf445255b97861e91a2a884/transformed/jetified-android-jsc-r250230/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-reanimated] /Users/adhiindra/Documents/TestRun/node_modules/react-native-reanimated/android/build/.transforms/228153301aa118c315397c8338d7f0ae/transformed/jetified-react-native-reanimated-67-hermes/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-reanimated] /Users/adhiindra/Documents/TestRun/node_modules/react-native-reanimated/android/build/.transforms/228153301aa118c315397c8338d7f0ae/transformed/jetified-react-native-reanimated-67-hermes/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:flipper:2.5.0] /Users/adhiindra/.gradle/caches/transforms-3/705daa35cfc508d545884e16a9ae76fc/transformed/jetified-flipper-2.5.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:flipper:2.5.0] /Users/adhiindra/.gradle/caches/transforms-3/705daa35cfc508d545884e16a9ae76fc/transformed/jetified-flipper-2.5.0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:stetho:2.5.0] /Users/adhiindra/.gradle/caches/transforms-3/3c07b8fb53743fa14ab68cadfbfb8166/transformed/jetified-stetho-2.5.0/AndroidManifest.xml:5:5-7:41

@@ -23,10 +23,14 @@ import com.ocetnik.timer.BackgroundTimerPackage;
 import com.wix.reactnativenotifications.RNNotificationsPackage;
 // react-native-push-notification
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
+// react-native-reanimated
+import com.swmansion.reanimated.ReanimatedPackage;
 // react-native-safe-area-context
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 // react-native-screens
 import com.swmansion.rnscreens.RNScreensPackage;
+// react-native-svg
+import com.horcrux.svg.SvgPackage;
 // react-native-vector-icons
 import com.oblador.vectoricons.VectorIconsPackage;
 
@@ -80,8 +84,10 @@ public class PackageList {
       new BackgroundTimerPackage(),
       new RNNotificationsPackage(reactNativeHost.getApplication()),
       new ReactNativePushNotificationPackage(),
+      new ReanimatedPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),
+      new SvgPackage(),
       new VectorIconsPackage()
     ));
   }

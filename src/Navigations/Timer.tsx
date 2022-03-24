@@ -1,6 +1,8 @@
 import {observer} from 'mobx-react-lite';
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
+import {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
+import CircularProgress from 'react-native-circular-progress-indicator';
 import {useStoreTodo} from '../TodoData';
 import {clockify, formatDecimals, getDateSeconds} from '../utils/format';
 import {displayNotifications, cancelNotification} from '../utils/notification';
@@ -27,68 +29,76 @@ const Timer = observer(() => {
     setIsPause,
     pauseTimer,
     setPauseTimer,
-    notifTitle,
-    setNotifTitle
+    progValue,
+    setProgValue,
   } = time;
 
   const startTimer = () => {
     let time = 0;
-    if(isFirstStart){
-      setNotifTitle('LETS GET REST!');
+    if (isFirstStart) {
       setTitle('ON WORKING!');
-      time = customTime? workingTime : 2500;
+      time = customTime ? workingTime : 1500;
       setTimeStart(time);
-    }else{
-      setNotifTitle('LETS GO WORK!');
+    } else {
       setTitle('RESTING!');
-      time = customTime? restingTime : 300;
+      time = customTime ? restingTime : 300;
       setTimeStart(time);
     }
-  
-    displayNotifications(notifTitle,time);
+
+    displayNotifications(
+      isFirstStart ? 'LETS GET REST!' : 'LETS GO WORK!',
+      time,
+    );
+    setProgValue(time);
     setStartDate(getDateSeconds());
     setTimerOn(true);
   };
 
   const displayTimeWorking = () => {
-    return setDisplayTime(customTime? workingTime : 2500);
-  }
+    return setDisplayTime(customTime ? workingTime : 1500);
+  };
 
   const displayTimeResting = () => {
-    return setDisplayTime(customTime? restingTime : 300);
-  }
+    return setDisplayTime(customTime ? restingTime : 300);
+  };
 
   const pauseTime = () => {
     setTimerOn(false);
     cancelNotification();
-    setPauseTimer(startDate + timeStart - getDateSeconds())
+    setPauseTimer(startDate + timeStart - getDateSeconds());
     setIsPause(true);
-  }
+  };
 
   const unPauseTime = () => {
     setTimerOn(true);
     setTimeStart(pauseTimer);
     setStartDate(getDateSeconds());
-    displayNotifications(notifTitle, getDateSeconds() + pauseTimer - getDateSeconds());
+    displayNotifications(
+      isFirstStart ? 'LETS GET REST!' : 'LETS GO WORK!',
+      getDateSeconds() + pauseTimer - getDateSeconds(),
+    );
     setIsPause(false);
-  }
-
+  };
 
   const checkDone = () => {
     if (isFirstStart) {
-      setIsFirstStart(false)
+      setIsFirstStart(false);
       setTitle('LETS GET REST!');
       displayTimeResting();
-      setTimerOn(false);
+      setProgValue(customTime ? restingTime : 300);
+      console.log(customTime, progValue, workingTime, isFirstStart);
     } else {
       setIsFirstStart(true);
       setTitle('LETS GO WORK!');
       displayTimeWorking();
-      setTimerOn(false);
+      setProgValue(customTime ? workingTime : 1500);
+      console.log(customTime, progValue, restingTime, isFirstStart);
     }
-  }
 
-  React.useEffect(() => {
+    setTimerOn(false);
+  };
+
+  useEffect(() => {
     const timeDate = setInterval(() => {
       if (
         timerOn &&
@@ -117,48 +127,73 @@ const Timer = observer(() => {
           style={{
             alignItems: 'center',
             justifyContent: 'center',
-            marginTop: 100,
+            marginBottom: 0,
           }}>
-          <Text style={styles.timer}>
-            {displayHours}:{displayMins}:{displaySecs}
-          </Text>
-        </View>
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 30,
-          }}>
-          <Text style={{fontWeight: 'bold', color: 'orange', fontSize: 25}}>
-            {title}
-          </Text>
+          <View style={{position: 'absolute'}}>
+            <Text style={styles.timer}>
+              {displayHours}:{displayMins}:{displaySecs}
+            </Text>
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: 10,
+              }}>
+              <Text style={{fontWeight: 'bold', color: 'white', fontSize: 20}}>
+                {title}
+              </Text>
+            </View>
+          </View>
+          <CircularProgress
+            value={displayTime}
+            radius={140}
+            duration={1000}
+            activeStrokeColor={'darkorange'}
+            showProgressValue={false}
+            maxValue={progValue}
+          />
         </View>
       </View>
-
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          padding: 50,
-        }}>
-        <TouchableOpacity
-          onPress={() => {
-            timerOn ? pauseTime() : isPause ? unPauseTime() : startTimer();
+      <View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginHorizontal: 40,
           }}>
-          <View style={styles.btn}>
-            <Text style={styles.btnText}>{timerOn ? 'PAUSE' : 'START'}</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            setTimerOn(false);
-            isFirstStart ? displayTimeWorking() : displayTimeResting()
-            cancelNotification();
-          }}>
-          <View style={styles.btn}>
-            <Text style={styles.btnText}>RESET</Text>
-          </View>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setTimerOn(false);
+              isFirstStart ? displayTimeWorking() : displayTimeResting();
+              cancelNotification();
+            }}>
+            <View style={[styles.btn, {borderColor: 'grey'}]}>
+              <View style={[styles.btn_inside, {backgroundColor: 'grey'}]}>
+                <Text style={[styles.btnText, {color: 'white'}]}>RESET</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              timerOn ? pauseTime() : isPause ? unPauseTime() : startTimer();
+            }}>
+            <View
+              style={[
+                styles.btn,
+                {borderColor: timerOn ? 'darkorange' : 'green'},
+              ]}>
+              <View
+                style={[
+                  styles.btn_inside,
+                  {backgroundColor: timerOn ? 'darkorange' : 'green'},
+                ]}>
+                <Text style={styles.btnText}>
+                  {timerOn ? 'PAUSE' : isPause ? 'RESUME' : 'START'}
+                </Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -171,24 +206,32 @@ const styles = StyleSheet.create({
     backgroundColor: '#36393F',
   },
   timer: {
-    color: 'orange',
-    fontSize: 40,
+    color: 'darkorange',
+    fontSize: 43,
     fontWeight: 'bold',
     justifyContent: 'center',
   },
   btn: {
-    padding: 20,
-    width: 100,
-    height: 100,
+    width: 110,
+    height: 110,
     alignItems: 'center',
     borderColor: 'orange',
     justifyContent: 'center',
-    borderWidth: 1,
+    borderWidth: 3,
+    borderRadius: 100,
+  },
+  btn_inside: {
+    width: 95,
+    height: 95,
+    alignItems: 'center',
+    backgroundColor: 'darkgreen',
+    justifyContent: 'center',
     borderRadius: 100,
   },
   btnText: {
-    color: 'orange',
+    color: 'white',
     fontWeight: 'bold',
+    fontSize: 15,
   },
 });
 export default Timer;

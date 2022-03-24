@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {FlatList, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  RefreshControl,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import Setting from './Setting';
@@ -36,9 +43,9 @@ const Home = observer(() => {
     if (overdueStatus(id) == 0) {
       if (date < new Date(Date.now())) {
         updateStatusTodo(id, 'OVERDUE');
-        overdueStatusUpdate(id, 1)
+        overdueStatusUpdate(id, 1);
         return checkStatus(id);
-      }else{
+      } else {
         return checkStatus(id);
       }
     } else {
@@ -49,17 +56,27 @@ const Home = observer(() => {
   return (
     <View>
       <View style={styles.canvas}>
-        <Text
+        <View
           style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
             paddingTop: 23,
-            paddingLeft: 25,
+            paddingHorizontal: 24,
             paddingBottom: 20,
-            color: 'white',
-            fontWeight: 'bold',
-            fontSize: 30,
           }}>
-          Hi, User!
-        </Text>
+          <Text
+            style={{
+              color: 'white',
+              fontWeight: 'bold',
+              fontSize: 30,
+            }}>
+            Hi, User!
+          </Text>
+          <TouchableOpacity onPress={() => setExtraDataDate(new Date(Date.now()))}>
+            <Icon name="refresh" size={30} color={'white'} />
+          </TouchableOpacity>
+        </View>
         <FlatList
           data={todos}
           extraData={!todos || todos.length === null ? 1 : todos.length}
