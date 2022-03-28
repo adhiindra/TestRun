@@ -33,6 +33,14 @@ const Timer = observer(() => {
     setProgValue,
   } = time;
 
+  const displayTimeWorking = () => {
+    return setDisplayTime(customTime ? workingTime : 1500);
+  };
+
+  const displayTimeResting = () => {
+    return setDisplayTime(customTime ? restingTime : 300);
+  };
+
   const startTimer = () => {
     let time = 0;
     if (isFirstStart) {
@@ -54,12 +62,13 @@ const Timer = observer(() => {
     setTimerOn(true);
   };
 
-  const displayTimeWorking = () => {
-    return setDisplayTime(customTime ? workingTime : 1500);
-  };
-
-  const displayTimeResting = () => {
-    return setDisplayTime(customTime ? restingTime : 300);
+  const resetTimer = () => {
+    setTimerOn(false);
+    setIsFirstStart(true);
+    displayTimeWorking();
+    setTitle('LETS GO WORK!');
+    setProgValue(customTime ? workingTime : 1500);
+    cancelNotification();
   };
 
   const pauseTime = () => {
@@ -163,9 +172,7 @@ const Timer = observer(() => {
           }}>
           <TouchableOpacity
             onPress={() => {
-              setTimerOn(false);
-              isFirstStart ? displayTimeWorking() : displayTimeResting();
-              cancelNotification();
+              resetTimer();
             }}>
             <View style={[styles.btn, {borderColor: 'grey'}]}>
               <View style={[styles.btn_inside, {backgroundColor: 'grey'}]}>

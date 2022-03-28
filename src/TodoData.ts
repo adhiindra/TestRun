@@ -59,11 +59,15 @@ const Timer = types
 const Login = types
   .model({
     isLogin: types.boolean,
+    email: types.string,
   })
   .actions(self => ({
     setIsLogin: (x: boolean) => {
       self.isLogin = x;
     },
+    setEmail: (x: string) => {
+      self.email = x;
+    }
   }));
 
 const Todo = types.model({
@@ -160,6 +164,7 @@ export async function setupTodoStore() {
       todos: null,
       logins: {
         isLogin: false,
+        email:"",
       },
       time: {
         timeStart: 10,

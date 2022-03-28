@@ -1,7 +1,14 @@
 import notifee, {TimestampTrigger, TriggerType} from '@notifee/react-native';
 
+
 export async function cancelNotification() {
   await notifee.cancelNotification('timer');
+}
+
+export async function setNotificationsPermission(){
+  await notifee.requestPermission({
+    alert:true
+  });
 }
 
 export async function displayNotifications(body: string, time: number) {
@@ -21,8 +28,6 @@ export async function displayNotifications(body: string, time: number) {
     name: 'timerChannel',
   });
 
-  await notifee.requestPermission();
-
   await notifee.createTriggerNotification(
     {
       id: 'timer',
@@ -31,6 +36,11 @@ export async function displayNotifications(body: string, time: number) {
       android: {
         channelId: channelId,
       },
+      ios: {
+        critical: true,
+        sound: 'local.wav',
+      },
+      
     },
     trigger,
   );

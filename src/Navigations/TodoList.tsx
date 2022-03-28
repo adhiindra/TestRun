@@ -20,7 +20,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 const Home = observer(() => {
   const {
-    todos,
+    todos,logins,
     deleteTodo,
     updateStatusTodo,
     checkStatus,
@@ -28,6 +28,7 @@ const Home = observer(() => {
     overdueStatusUpdate,
   } = useStoreTodo();
   const [extraDataDate, setExtraDataDate] = useState(new Date());
+  const {email} = logins;
 
   const updateList = (id: number, status: string) => {
     updateStatusTodo(id, status);
@@ -71,7 +72,7 @@ const Home = observer(() => {
               fontWeight: 'bold',
               fontSize: 30,
             }}>
-            Hi, User!
+            Hi, {email}
           </Text>
           <TouchableOpacity onPress={() => setExtraDataDate(new Date(Date.now()))}>
             <Icon name="refresh" size={30} color={'white'} />

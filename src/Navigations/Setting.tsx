@@ -119,6 +119,7 @@ const Setting = ({navigation}: {navigation: any}) => {
                   height: 30,
                   textAlign: 'center',
                 }}
+                keyboardAppearance={'dark'}
                 keyboardType={'numeric'}
                 onChangeText={inWorkingTime => setInWorkingTime(inWorkingTime)}
                 defaultValue={inWorkingTime}
@@ -143,6 +144,7 @@ const Setting = ({navigation}: {navigation: any}) => {
                   height: 30,
                   textAlign: 'center',
                 }}
+                keyboardAppearance={'dark'}
                 keyboardType={'numeric'}
                 onChangeText={inRestingTime => setInRestingTime(inRestingTime)}
                 defaultValue={inRestingTime}
@@ -151,9 +153,10 @@ const Setting = ({navigation}: {navigation: any}) => {
           </View>
           <View style={styles.divider} />
         </View>
-        <View style={{alignItems: 'center'}}>
+      </ScrollView>
+      <View style={{alignItems: 'center'}}>
           <TouchableOpacity
-            style={[styles.btn, {backgroundColor: 'blue'}]}
+            style={[styles.btn, {backgroundColor: '#5440D1'}]}
             onPress={saveSetting}>
             <Text style={styles.btnText}>Save</Text>
           </TouchableOpacity>
@@ -161,7 +164,6 @@ const Setting = ({navigation}: {navigation: any}) => {
             <Text style={styles.btnText}>Log Out</Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
     </View>
   );
 };
