@@ -121,7 +121,7 @@ const Timer = observer(() => {
           checkDone();
         }
       }
-      console.log(startDate + timeStart - getDateSeconds());
+      // console.log(startDate + timeStart - getDateSeconds());
     }, 1000);
 
     return () => clearInterval(timeDate);

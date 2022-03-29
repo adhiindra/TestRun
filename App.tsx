@@ -10,6 +10,7 @@ import {
   useStoreTodo,
 } from './src/TodoData';
 import {StatusBar} from 'react-native';
+import {TestVar, secondTest} from '@env'
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,7 @@ const App = () => {
     },
   };
 
+  console.log(TestVar, secondTest)
   return (
     <TodoDataProvider value={todoStore}>
       <NavigationContainer theme={MyTheme}>

@@ -5,7 +5,8 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start:development": "APP_ENV=development npx react-native start",
+    "start:production": "APP_ENV=production npx react-native start",
     "test": "jest",
     "lint": "eslint ."
   },
@@ -30,6 +31,7 @@
     "react-native": "0.67.3",
     "react-native-background-timer": "^2.4.1",
     "react-native-circular-progress-indicator": "^2.0.6",
+    "react-native-dotenv": "^3.3.1",
     "react-native-eject": "^0.1.2",
     "react-native-modal": "^13.0.1",
     "react-native-notifications": "^4.2.4",
@@ -48,6 +50,7 @@
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/react": "^17.0.40",
     "@types/react-native": "^0.67.3",
+    "@types/react-native-dotenv": "^0.2.0",
     "@types/react-native-vector-icons": "^6.4.10",
     "babel-jest": "^26.6.3",
     "eslint": "7.14.0",
