@@ -1,6 +1,6 @@
 {
   "name": "RNNotifee",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "Notifee - a feature rich notifications library for React Native.",
   "summary": "A feature rich local notifications library for React Native Android & iOS.",
   "homepage": "https://notifee.app",
@@ -8,7 +8,7 @@
   "authors": "Invertase Limited",
   "source": {
     "git": "https://github.com/invertase/notifee",
-    "tag": "v5.0.2"
+    "tag": "v5.0.3"
   },
   "social_media_url": "http://twitter.com/notifee_app",
   "cocoapods_version": ">= 1.10.0",

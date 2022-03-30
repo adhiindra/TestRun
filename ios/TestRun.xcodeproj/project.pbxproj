@@ -15,6 +15,7 @@
 		79D0506AFA18CF64B99389DA /* libPods-TestRun-TestRunTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 460EEA5EB157B1A66EE728E5 /* libPods-TestRun-TestRunTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AA069A6127E3452B00D935A7 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = AA069A6027E3452B00D935A7 /* Fonts */; };
+		AA333B1A27F3F163008751ED /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA333B1927F3F163008751ED /* AppCenter-Config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		460EEA5EB157B1A66EE728E5 /* libPods-TestRun-TestRunTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestRun-TestRunTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TestRun/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA069A6027E3452B00D935A7 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
+		AA333B1927F3F163008751ED /* AppCenter-Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "TestRun/AppCenter-Config.plist"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				AA333B1927F3F163008751ED /* AppCenter-Config.plist */,
 				13B07FAE1A68108700A75B9A /* TestRun */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* TestRunTests */,
@@ -246,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA069A6127E3452B00D935A7 /* Fonts in Resources */,
+				AA333B1A27F3F163008751ED /* AppCenter-Config.plist in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
