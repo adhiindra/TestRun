@@ -17,8 +17,16 @@ import io.invertase.notifee.NotifeePackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 // @react-native-community/datetimepicker
 import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
+// appcenter
+import com.microsoft.appcenter.reactnative.appcenter.AppCenterReactNativePackage;
+// appcenter-analytics
+import com.microsoft.appcenter.reactnative.analytics.AppCenterReactNativeAnalyticsPackage;
+// appcenter-crashes
+import com.microsoft.appcenter.reactnative.crashes.AppCenterReactNativeCrashesPackage;
 // react-native-background-timer
 import com.ocetnik.timer.BackgroundTimerPackage;
+// react-native-code-push
+import com.microsoft.codepush.react.CodePush;
 // react-native-notifications
 import com.wix.reactnativenotifications.RNNotificationsPackage;
 // react-native-push-notification
@@ -81,7 +89,11 @@ public class PackageList {
       new NotifeePackage(),
       new AsyncStoragePackage(),
       new RNDateTimePickerPackage(),
+      new AppCenterReactNativePackage(getApplication()),
+      new AppCenterReactNativeAnalyticsPackage(getApplication(), getResources().getString(com.testrun.R.string.appCenterAnalytics_whenToEnableAnalytics)),
+      new AppCenterReactNativeCrashesPackage(getApplication(), getResources().getString(com.testrun.R.string.appCenterCrashes_whenToSendCrashes)),
       new BackgroundTimerPackage(),
+      new CodePush(getResources().getString(com.testrun.R.string.CodePushDeploymentKey), getApplicationContext(), com.testrun.BuildConfig.DEBUG),
       new RNNotificationsPackage(reactNativeHost.getApplication()),
       new ReactNativePushNotificationPackage(),
       new ReanimatedPackage(),

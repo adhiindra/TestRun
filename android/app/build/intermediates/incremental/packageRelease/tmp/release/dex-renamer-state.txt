@@ -1,0 +1,7 @@
+#Thu Mar 31 09:25:27 WITA 2022
+base.1=/Users/adhiindra/Documents/TestRun/android/app/build/intermediates/dex/release/mergeDexRelease/classes2.dex
+path.1=classes2.dex
+base.0=/Users/adhiindra/Documents/TestRun/android/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex

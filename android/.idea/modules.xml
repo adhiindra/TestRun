@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TestRun.iml" filepath="$PROJECT_DIR$/.idea/modules/TestRun.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/TestRun.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/TestRun.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-32898695/TestRun.appcenter.iml" filepath="$PROJECT_DIR$/.idea/modules/-32898695/TestRun.appcenter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1556638514/TestRun.appcenter-analytics.iml" filepath="$PROJECT_DIR$/.idea/modules/1556638514/TestRun.appcenter-analytics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/211785281/TestRun.appcenter-crashes.iml" filepath="$PROJECT_DIR$/.idea/modules/211785281/TestRun.appcenter-crashes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/23602567/TestRun.notifee_react-native.iml" filepath="$PROJECT_DIR$/.idea/modules/23602567/TestRun.notifee_react-native.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2132027808/TestRun.react-native-async-storage_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/-2132027808/TestRun.react-native-async-storage_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1184188719/TestRun.react-native-background-timer.iml" filepath="$PROJECT_DIR$/.idea/modules/-1184188719/TestRun.react-native-background-timer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-325350609/TestRun.react-native-code-push.iml" filepath="$PROJECT_DIR$/.idea/modules/-325350609/TestRun.react-native-code-push.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1156685836/TestRun.react-native-community_datetimepicker.iml" filepath="$PROJECT_DIR$/.idea/modules/-1156685836/TestRun.react-native-community_datetimepicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1003722203/TestRun.react-native-notifications.iml" filepath="$PROJECT_DIR$/.idea/modules/-1003722203/TestRun.react-native-notifications.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1005448179/TestRun.react-native-push-notification.iml" filepath="$PROJECT_DIR$/.idea/modules/1005448179/TestRun.react-native-push-notification.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1809446399/TestRun.react-native-reanimated.iml" filepath="$PROJECT_DIR$/.idea/modules/-1809446399/TestRun.react-native-reanimated.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2000711908/TestRun.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/2000711908/TestRun.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1530601988/TestRun.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/-1530601988/TestRun.react-native-screens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/625439833/TestRun.react-native-svg.iml" filepath="$PROJECT_DIR$/.idea/modules/625439833/TestRun.react-native-svg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1018945925/TestRun.react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/-1018945925/TestRun.react-native-vector-icons.iml" />
+    </modules>
+  </component>
+</project>

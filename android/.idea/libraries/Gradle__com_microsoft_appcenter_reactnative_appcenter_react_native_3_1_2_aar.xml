@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.microsoft.appcenter.reactnative:appcenter-react-native:3.1.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/53bcccc43bf7a47ab30bbaafd0b46771/transformed/jetified-appcenter-react-native-3.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/53bcccc43bf7a47ab30bbaafd0b46771/transformed/jetified-appcenter-react-native-3.1.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/53bcccc43bf7a47ab30bbaafd0b46771/transformed/jetified-appcenter-react-native-3.1.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.microsoft.appcenter.reactnative/appcenter-react-native/3.1.2/18b488e17eea64aee196a889adaa9b26c360e571/appcenter-react-native-3.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

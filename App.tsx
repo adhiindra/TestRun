@@ -1,20 +1,20 @@
 import React, {useLayoutEffect, useState} from 'react';
-import {DarkTheme, NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import TodoList from './src/Navigations/TodoList';
-import Login from './src/Navigations/Login';
+import MainNavigations from './src/Navigations/MainNavigations';
 import {
   setupTodoStore,
   TodoDataProvider,
   TodoDataType,
-  useStoreTodo,
-} from './src/TodoData';
-import {StatusBar} from 'react-native';
-import {TestVar, secondTest} from '@env'
+} from './src/Model/TodoData';
+import {TestVar, secondTest} from '@env';
+import codePush from 'react-native-code-push';
+import { setNotificationsPermission } from './src/utils/notification';
 
-const Stack = createNativeStackNavigator();
+let codePushOptions = {checkFrequency: codePush.CheckFrequency.ON_APP_RESUME};
 
 const App = () => {
+
+  setNotificationsPermission();
+  
   const [todoStore, setTodoStore] = useState<TodoDataType | undefined>(
     undefined,
   );
@@ -29,34 +29,12 @@ const App = () => {
     return null;
   }
 
-  StatusBar.setBarStyle('light-content', true);
-
-  const MyTheme = {
-    ...DarkTheme,
-    colors: {
-      ...DarkTheme.colors,
-      primary: '#40444B',
-    },
-  };
-
-  console.log(TestVar, secondTest)
+  console.log(TestVar, secondTest);
   return (
     <TodoDataProvider value={todoStore}>
-      <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen
-            name="TodoList"
-            component={TodoList}
-            options={{
-              headerBackVisible: false,
-              gestureEnabled: false,
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <MainNavigations/>
     </TodoDataProvider>
   );
 };
 
-export default App;
+export default codePush(codePushOptions)(App);

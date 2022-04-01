@@ -1,4 +1,4 @@
-import notifee, {TimestampTrigger, TriggerType} from '@notifee/react-native';
+import notifee, {AuthorizationStatus, TimestampTrigger, TriggerType} from '@notifee/react-native';
 
 
 export async function cancelNotification() {
@@ -6,9 +6,18 @@ export async function cancelNotification() {
 }
 
 export async function setNotificationsPermission(){
+  
   await notifee.requestPermission({
     alert:true
   });
+
+  const settings = await notifee.getNotificationSettings();
+
+  if (settings.authorizationStatus == AuthorizationStatus.AUTHORIZED) {
+    console.log('Notification permissions has been authorized');
+  } else if (settings.authorizationStatus == AuthorizationStatus.DENIED) {
+    console.log('Notification permissions has been denied');
+  }
 }
 
 export async function displayNotifications(body: string, time: number) {
